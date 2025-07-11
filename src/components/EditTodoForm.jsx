@@ -13,6 +13,7 @@ export default function EditTodoForm({ id, task, editTodo, toggle }) {
 				toggle();
 				reset();
 			}}
+			style={{ marginLeft: '1rem', width: '50%' }}
 		>
 			<TextField
 				variant="standard"
@@ -20,21 +21,8 @@ export default function EditTodoForm({ id, task, editTodo, toggle }) {
 				onChange={handleChange}
 				margin="normal"
 				fullWidth
+				autoFocus
 				// label={task}
-				sx={{
-					// Target the common base for the underline
-					'& .MuiInput-underline:before': {
-						borderBottom: 'none', // Remove the default underline
-					},
-					// Target the underline when hovered (if it reappears)
-					'& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-						borderBottom: 'none', // Ensure no underline on hover
-					},
-					// Target the underline when focused
-					'& .MuiInput-underline:after': {
-						borderBottom: 'none', // Remove the focus underline
-					},
-				}}
 			></TextField>
 		</form>
 	);

@@ -7,7 +7,7 @@ export default function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
 	return (
 		<Paper>
 			<List>
-				{todos.map((todo) => {
+				{todos.map((todo, index) => {
 					return (
 						<div key={todo.id}>
 							<Todo
@@ -18,7 +18,7 @@ export default function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
 								editTodo={editTodo}
 								id={todo.id}
 							></Todo>
-							<Divider />
+							{index !== todos.length - 1 && <Divider />}
 						</div>
 					);
 				})}
