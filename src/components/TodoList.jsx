@@ -4,25 +4,27 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import Todo from './Todo';
 export default function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
-	return (
-		<Paper>
-			<List>
-				{todos.map((todo, index) => {
-					return (
-						<div key={todo.id}>
-							<Todo
-								task={todo.text}
-								completed={todo.completed}
-								removeTodo={removeTodo}
-								toggleTodo={toggleTodo}
-								editTodo={editTodo}
-								id={todo.id}
-							></Todo>
-							{index !== todos.length - 1 && <Divider />}
-						</div>
-					);
-				})}
-			</List>
-		</Paper>
-	);
+	if (todos.length) {
+		return (
+			<Paper>
+				<List>
+					{todos.map((todo, index) => {
+						return (
+							<div key={todo.id}>
+								<Todo
+									{...todo}
+									completed={todo.completed}
+									removeTodo={removeTodo}
+									toggleTodo={toggleTodo}
+									editTodo={editTodo}
+								></Todo>
+								{index !== todos.length - 1 && <Divider />}
+							</div>
+						);
+					})}
+				</List>
+			</Paper>
+		);
+	}
+	return null;
 }
