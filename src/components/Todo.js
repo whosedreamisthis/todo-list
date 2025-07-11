@@ -7,11 +7,16 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
 
-export default function Todo({ task, completed, removeTodo, id }) {
-	console.log(task, completed);
+export default function Todo({ task, completed, removeTodo, id, toggleTodo }) {
 	return (
 		<ListItem>
-			<Checkbox checked={completed} tabIndex={-1} />
+			<Checkbox
+				checked={completed}
+				tabIndex={-1}
+				onClick={() => {
+					toggleTodo(id);
+				}}
+			/>
 			<ListItemText
 				style={{ textDecoration: completed ? 'line-through' : 'none' }}
 			>

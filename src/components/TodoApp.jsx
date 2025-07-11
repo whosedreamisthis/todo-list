@@ -7,6 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Grid from '@mui/material/Grid';
 import TodoList from './TodoList.jsx';
 import TodoForm from './TodoForm.jsx';
+import { v4 as uuid } from 'uuid';
 export default function TodoApp() {
 	const initialTodos = [
 		{ id: 1, text: 'Learn React', completed: false },
@@ -17,11 +18,21 @@ export default function TodoApp() {
 	const addTodo = (newTodoText) => {
 		setTodos([
 			...todos,
-			{ id: { newTodoText }, text: newTodoText, completed: false },
+			{ id: uuid(), text: newTodoText, completed: false },
 		]);
 	};
 	const removeTodo = (todoId) => {
 		setTodos(todos.filter((todo) => todo.id !== todoId));
+	};
+
+	const toggleTodo = (todoId) => {
+		const updatedTodos = todos.map((todo) => {
+			if (todo.id === todoId) {
+				return { ...todo, completed: !todo.completed };
+			}
+			return todo;
+		});
+		setTodos(updatedTodos);
 	};
 	return (
 		<Paper
@@ -53,7 +64,11 @@ export default function TodoApp() {
 					width="40%"
 				>
 					<TodoForm addTodo={addTodo} />
-					<TodoList todos={todos} removeTodo={removeTodo} />
+					<TodoList
+						todos={todos}
+						removeTodo={removeTodo}
+						toggleTodo={toggleTodo}
+					/>
 				</Grid>
 			</Grid>
 		</Paper>
