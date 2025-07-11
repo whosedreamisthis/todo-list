@@ -9,13 +9,10 @@ import TodoList from './TodoList.jsx';
 import TodoForm from './TodoForm.jsx';
 import useTodoState from '../hooks/useTodoState.js';
 export default function TodoApp() {
-	const initialTodos = JSON.parse(window.localStorage.getItem('todos')) || [];
+	const initialTodos = [{ id: 1, task: 'Learn Hooks', completed: false }];
 	const { removeTodo, todos, addTodo, toggleTodo, editTodo } =
 		useTodoState(initialTodos);
 
-	useEffect(() => {
-		window.localStorage.setItem('todos', JSON.stringify(todos));
-	}, [todos]);
 	return (
 		<Paper
 			style={{
