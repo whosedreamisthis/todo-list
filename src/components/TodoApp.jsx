@@ -10,7 +10,7 @@ import TodoForm from './TodoForm.jsx';
 export default function TodoApp() {
 	const initialTodos = [
 		{ id: 1, text: 'Learn React', completed: false },
-		{ id: 2, text: 'Build a Todo App', completed: false },
+		{ id: 2, text: 'Build a Todo App', completed: true },
 		{ id: 3, text: 'Master Hooks', completed: false },
 	];
 	const [todos, setTodos] = useState(initialTodos);
@@ -39,11 +39,7 @@ export default function TodoApp() {
 					<Typography color="inherit">TODOS WITH HOOKS</Typography>
 				</Toolbar>
 			</AppBar>
-			<Grid
-				container
-				justifyContent="center"
-				style={{ marginTop: '1rem' }}
-			>
+			<Grid container justify="center" style={{ marginTop: '1rem' }}>
 				<Grid
 					item
 					xs={11}

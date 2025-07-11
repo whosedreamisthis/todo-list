@@ -9,14 +9,13 @@ export default function TodoList({ todos }) {
 			<List>
 				{todos.map((todo) => {
 					return (
-						<>
+						<div key={todo.id}>
 							<Todo
 								task={todo.text}
-								key={todo.id}
 								completed={todo.completed}
 							></Todo>
 							<Divider />
-						</>
+						</div>
 					);
 				})}
 			</List>
