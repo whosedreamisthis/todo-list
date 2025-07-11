@@ -20,6 +20,9 @@ export default function TodoApp() {
 			{ id: { newTodoText }, text: newTodoText, completed: false },
 		]);
 	};
+	const removeTodo = (todoId) => {
+		setTodos(todos.filter((todo) => todo.id !== todoId));
+	};
 	return (
 		<Paper
 			style={{
@@ -50,7 +53,7 @@ export default function TodoApp() {
 					width="40%"
 				>
 					<TodoForm addTodo={addTodo} />
-					<TodoList todos={todos} />
+					<TodoList todos={todos} removeTodo={removeTodo} />
 				</Grid>
 			</Grid>
 		</Paper>

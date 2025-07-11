@@ -7,7 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
 
-export default function Todo({ task, completed }) {
+export default function Todo({ task, completed, removeTodo, id }) {
 	console.log(task, completed);
 	return (
 		<ListItem>
@@ -18,7 +18,13 @@ export default function Todo({ task, completed }) {
 				{task}
 			</ListItemText>
 			<ListItemSecondaryAction>
-				<IconButton edge="end" aria-label="delete">
+				<IconButton
+					edge="end"
+					aria-label="delete"
+					onClick={() => {
+						removeTodo(id);
+					}}
+				>
 					<DeleteIcon />
 				</IconButton>
 				<IconButton edge="end" aria-label="edit">
