@@ -13,11 +13,7 @@ export default function TodoList() {
 					{todos.map((todo, index) => {
 						return (
 							<div key={todo.id}>
-								<Todo
-									completed={todo.completed}
-									task={todo.task}
-									id={todo.id}
-								></Todo>
+								<Todo {...todo}></Todo>
 								{index !== todos.length - 1 && <Divider />}
 							</div>
 						);
