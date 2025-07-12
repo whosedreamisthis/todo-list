@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import useToggle from '../hooks/useToggle';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -8,11 +8,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
 import EditTodoForm from './EditTodoForm';
-import { TodosContext } from '../contexts/todos.context';
+import { DispatchContext } from '../contexts/todos.context';
 
-export default function Todo({ task, completed, id }) {
+function Todo({ task, completed, id }) {
+	console.log(`Rendering Todo: ${task}`);
 	const [isEditing, toggle] = useToggle(false);
-	const { dispatch } = React.useContext(TodosContext);
+	const dispatch = React.useContext(DispatchContext);
 	return (
 		<ListItem style={{ height: '64px' }}>
 			{isEditing ? (
@@ -56,3 +57,4 @@ export default function Todo({ task, completed, id }) {
 		</ListItem>
 	);
 }
+export default memo(Todo);
