@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import Todo from './Todo';
-export default function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
+import { TodosContext } from '../contexts/todos.context';
+export default function TodoList() {
+	const { todos } = useContext(TodosContext);
 	if (todos.length) {
 		return (
 			<Paper>
@@ -12,11 +14,9 @@ export default function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
 						return (
 							<div key={todo.id}>
 								<Todo
-									{...todo}
 									completed={todo.completed}
-									removeTodo={removeTodo}
-									toggleTodo={toggleTodo}
-									editTodo={editTodo}
+									task={todo.task}
+									id={todo.id}
 								></Todo>
 								{index !== todos.length - 1 && <Divider />}
 							</div>

@@ -13,6 +13,7 @@ const useTodoState = (initialTodos) => {
 			]);
 		},
 		removeTodo: (todoId) => {
+			console.log('removeTodo', todoId);
 			const updatedTodos = todos.filter((todo) => todo.id !== todoId);
 			setTodos(updatedTodos);
 		},

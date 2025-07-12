@@ -8,11 +8,8 @@ import Grid from '@mui/material/Grid';
 import TodoList from './TodoList.jsx';
 import TodoForm from './TodoForm.jsx';
 import useTodoState from '../hooks/useTodoState.js';
+import { TodosProvider } from '../contexts/todos.context.js';
 export default function TodoApp() {
-	const initialTodos = [{ id: 1, task: 'Learn Hooks', completed: false }];
-	const { removeTodo, todos, addTodo, toggleTodo, editTodo } =
-		useTodoState(initialTodos);
-
 	return (
 		<Paper
 			style={{
@@ -42,13 +39,10 @@ export default function TodoApp() {
 					style={{ margin: '1rem auto' }}
 					width="40%"
 				>
-					<TodoForm addTodo={addTodo} />
-					<TodoList
-						todos={todos}
-						removeTodo={removeTodo}
-						toggleTodo={toggleTodo}
-						editTodo={editTodo}
-					/>
+					<TodosProvider>
+						<TodoForm />
+						<TodoList />
+					</TodosProvider>
 				</Grid>
 			</Grid>
 		</Paper>
